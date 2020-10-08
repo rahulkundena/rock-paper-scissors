@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Skill Safari | Rock, Paper, Scissors</title>
+  <!-- linking font awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    
+  <!-- linking bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    
+  <!-- ekko CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css" integrity="sha512-Velp0ebMKjcd9RiCoaHhLXkR1sFoCCWXNp6w4zj1hfMifYB5441C+sKeBl/T/Ka6NjBiRfBBQRaQq65ekYz3UQ==" crossorigin="anonymous" />
+
+  <!-- custom CSS -->
+  <link rel="stylesheet" href="CSS/style.css" type="text/CSS">
+</head>
+<body>
+  <!-- head -->
+  <section class="head">
+    <div class="container">
+      <div class="col-xl-8 mt-5 mx-auto">
+        <div class="row cont justify-content-between">
+           <div class="col-sm-12 col-md-6 col-lg-4">
+             <img src="images/logo.svg" alt="logo">
+           </div>
+           <div class="col-sm-12 col-md-6 col-lg-4">
+             <div class="score">
+               <span>SCORE</span>
+               <h1><div id="count"></div></h1>
+             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- step1 -->
+  <section id="menu">
+    <div class="container">
+      <div class="justify-content-around row">
+        <div class="col-lg-6 col-md-8 col-sm-12 my-3">
+          <div class="bg"></div>
+          <div class="row justify-content-around align-items-center">
+            <div class="Paper bg-white p-4 m-5 text-center d-inline" onclick="paper()" 
+             id="paper">
+              <img src="images/icon-paper.svg" class="img"  alt="Paper">
+            </div>
+            <div class="Scissors bg-white p-4 m-5 text-center d-inline" id="scissors">
+              <img src="images/icon-scissors.svg" class="img" onclick="scissors()" alt="Scissors">
+            </div>
+          </div>
+          <div class="row justify-content-around">
+            <div class="Rock bg-white p-4 m-5 d-inline" id="rock">
+              <img src="images/icon-rock.svg" class="img" onclick="rock()" alt="Rock">
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- mobile rules -->
+ <div id="myModal" class="modal">
+  <!-- content -->
+  <div class="modal-content">
+    <div class="row justify-content-between">
+      <span class="rule">RULES</span>
+      <span class="close">&times;</span>
+    </div>
+    <img src="images/image-rules.svg" class="Rule" alt="img">
+    <span class="close1 d-none">&times;</span>
+  </div>
+
+  </div>
+  <!-- game -->
+  <section id="pick" style="display: none;">
+    <div class="container">
+      <div class="row">
+        <div class="col-6 box-1 my-5 text-center justify-content-between">
+          <h2>YOU PICKED</h2>
+          
+          <img src="images/icon-paper.svg" id="you-pick" class="bg-white box-1 Paper m-5 p-5" alt="pick">
+          <p id="demo1"></p>
+        </div>
+        <div class="col-6 box-1 my-5 text-center justify-content-between">
+          <h2>BOT PICKED</h2>
+          <img src="images/icon-paper.svg" id="bot-pick" style="display: none;" class="bg-white box-1 Paper m-5 p-5" alt="bot pick">
+          <p id='demo2'></p>
+          <div class="bg-3" id="bg"></div>
+        </div>
+      </div>
+      <p id="demo" class="result"></p>
+      <p onclick="playAgain()" class="Again"><a href="#" class="but">Play Again</a></p>
+      
+    </div>
+  </section>
+  <!-- rules -->
+  <button class="btn" id="myBtn">RULES</button>
+
+
+
+
+
+
+  <!-- linking JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  
+  <!-- ekko-lightbox scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js" integrity="sha512-YibiFIKqwi6sZFfPm5HNHQYemJwFbyyYHjrr3UT+VobMt/YBo1kBxgui5RWc4C3B4RJMYCdCAJkbXHt+irKfSA==" crossorigin="anonymous"></script>
+    
+  <script src="script/index.js"></script>
+</body>
+</html>
