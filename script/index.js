@@ -36,14 +36,6 @@ function paper(){
     document.getElementById('pick').style.display = 'block';
     game(0);
 }
-function scissors(){
-    document.getElementById('you-pick').style.border = '20px solid hsl(40, 84%, 53%)';
-    document.getElementById('you-pick').src = 'images/icon-scissors.svg';
-    document.getElementById('bot-pick').display = 'none'
-    document.getElementById('menu').style.display = 'none';
-    document.getElementById('pick').style.display = 'block';
-    game(2);
-}
 function rock(){
     document.getElementById('you-pick').style.border = '20px solid hsl(349, 71%, 52%)';
     document.getElementById('you-pick').src = 'images/icon-rock.svg';
@@ -52,18 +44,28 @@ function rock(){
     document.getElementById('pick').style.display = 'block';
     game(1);
 }
+function scissors(){
+    document.getElementById('you-pick').style.border = '20px solid hsl(40, 84%, 53%)';
+    document.getElementById('you-pick').src = 'images/icon-scissors.svg';
+    document.getElementById('bot-pick').display = 'none'
+    document.getElementById('menu').style.display = 'none';
+    document.getElementById('pick').style.display = 'block';
+    game(2);
+}
 function bot(rand){
     if (rand==0){
         document.getElementById('bot-pick').style.display = document.getElementById('you-pick').style.display;
+        document.getElementById('bot-pick').src = 'images/icon-paper.svg';
+        document.getElementById('bot-pick').style.border = '20px solid hsl(230, 89%, 62%)';
         document.getElementById('bg').style.display = 'none';
     }
     else if (rand==1){
-        document.getElementById('bg').style.display = 'none';
         document.getElementById('bot-pick').style.display = document.getElementById('you-pick').style.display;
         document.getElementById('bot-pick').src = 'images/icon-rock.svg';
         document.getElementById('bot-pick').style.border = '20px solid hsl(349, 71%, 52%)';
+        document.getElementById('bg').style.display = 'none';
     }
-    else{
+    else if(rand==2){
         document.getElementById('bg').style.display = 'none';
         document.getElementById('bot-pick').style.display = document.getElementById('you-pick').style.display;
         document.getElementById('bot-pick').src = 'images/icon-scissors.svg';
@@ -73,24 +75,26 @@ function bot(rand){
 var card = ['paper','rock', 'scissors'];
 function game(num){
     var rand  = Math.floor(Math.random() * 3);
-    bot(rand);
-    if(num==rand){
-        document.getElementById('demo').innerHTML = 'DRAW';
-    }
-    else if(num==0){
+    // console.log(rand);
+    if(num==0){
         if(rand==2){
         document.getElementById('demo').innerHTML = 'YOU LOSE';
         }
-        else{
+        else if (rand==1){
             document.getElementById('demo').innerHTML = 'YOU WIN';
             score = score + 1;
             document.getElementById('count').innerHTML = score;
-
+        }
+        else{
+            document.getElementById('demo').innerHTML = 'DRAW';
         }
     }
     else if (num==1){
         if (rand==0){
             document.getElementById('demo').innerHTML = 'YOU LOSE';
+        }
+        else if (rand==1){
+           document.getElementById('demo').innerHTML = 'DRAW';
         }
         else{
             document.getElementById('demo').innerHTML = 'YOU WIN'; 
@@ -104,10 +108,15 @@ function game(num){
             score = score + 1;
             document.getElementById('count').innerHTML = score;
         }
-        else{
+        else if(rand==1){
             document.getElementById('demo').innerHTML = 'YOU LOSE';
         }
+        else{
+            document.getElementById('demo').innerHTML = 'DRAW';
+        }
     }
+    
+    bot(rand);
 
 }
 function playAgain(){
